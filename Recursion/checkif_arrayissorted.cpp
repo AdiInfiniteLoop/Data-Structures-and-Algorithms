@@ -1,4 +1,5 @@
 #include<iostream>
+#include<valarray> //Check this header file
 bool checkSorted(int arr[],int n){ //Can also take int *arr 
     if(n <= 1) return true; //To check if the array has 0 or 1 element making it already sorted
     if(arr[n-2] > arr[n-1]) return false;
@@ -7,8 +8,8 @@ bool checkSorted(int arr[],int n){ //Can also take int *arr
 }
 
 int main(){
-int arr[] = {1,2,4,5,6,7,8,9};
-int n = 8;
+int arr[] = {4,3,1,2,4,4};
+int n = 6;
 
 if(checkSorted(arr,n) == true)   
     std::cout<<"Sorted";

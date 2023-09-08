@@ -1,13 +1,11 @@
 #include<iostream>
-#include<vector>
 
-void binarys(int v[], int s, int e, int &key){
+void binarys(int *v, int& s, int& e, int &key){
     if(s > e) return;
     int mid = s + (e - s)/2;
 
-    if (key == v[mid]) std::cout<<mid;
-    if(key > v[mid])binarys(v,mid + 1,e,key);
-    else if(key < v[mid]) binarys(v,s,mid - 1,key);
+    if (key == v[mid]) std::cout<<mid; 
+    return (key > v[mid]) ? binarys(v,mid + 1,e,key) :binarys(v,s,mid - 1,key); //Using ternary operator 
 }
 
 int main(){
