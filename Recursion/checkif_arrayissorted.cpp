@@ -1,19 +1,18 @@
 #include<iostream>
+bool checkSorted(int *arr,int n){
+    if(n <= 1) return true;
 
-bool checkSorted(int arr[],int n, int i){
-    if(i == n - 1){ 
-        return NULL;
-    }
+    if(arr[n-2] > arr[n-1]) return false;
 
-    if((arr[i] > arr[i+1])) return false;
-    return checkSorted(arr,n,i+1);
-
+    return checkSorted(arr,n-1);   
 }
+
 int main(){
-    int arr[] = {1,3,5,6,8,9};
-    int n = 6;
-    int i = 0;
-    bool isSorted = checkSorted(arr,n,i);
-    if (isSorted) std::cout<<" Sorted";
-    else std::cout<<"Not Sorted";
+int arr[] = {1,2,4,5,6,7,8,9};
+int n = 8;
+
+if(checkSorted(arr,n) == true)   
+    std::cout<<"Sorted";
+else
+std::cout<<"Not sorted";
 }
