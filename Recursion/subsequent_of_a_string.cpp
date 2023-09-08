@@ -7,10 +7,10 @@ void printSubseq(string str,string out,int i){
 return;
 }
 //for excluding the letters
-printSubseq(str,out,i+1);
+printSubseq(str,out,i+1);//try to exclude first then include later 
 //for including the string
-out = out + str[i]; //inputting the string values in output file
-printSubseq(str,out,i+1);
+ //inputting the string values in output file
+printSubseq(str,out + str[i],i+1);
 }
 
 int main(){
