@@ -1,7 +1,6 @@
 #include<iostream>
-bool checkSorted(int *arr,int n){
-    if(n <= 1) return true;
-
+bool checkSorted(int arr[],int n){ //Can also take int *arr 
+    if(n <= 1) return true; //To check if the array has 0 or 1 element making it already sorted
     if(arr[n-2] > arr[n-1]) return false;
 
     return checkSorted(arr,n-1);   
