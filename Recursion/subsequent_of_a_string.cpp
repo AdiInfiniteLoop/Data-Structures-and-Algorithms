@@ -14,6 +14,7 @@ printSubseq(str,out + str[i],i+1);
 }
 
 int main(){
+
 //Subsequences of a string
 string str= "abc";
 
