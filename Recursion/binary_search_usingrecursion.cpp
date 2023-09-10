@@ -4,7 +4,8 @@ void binarys(int *v, int& s, int& e, int &key){
     if(s > e) return;
     int mid = s + (e - s)/2;
 
-    if (key == v[mid]) std::cout<<mid; 
+    if (key == v[mid]) std::cout<<mid;
+    ////cannot bind non-const lvalue reference of type ‘int&’ to an rvalue of type ‘int’ ....to tackle this problem we use s = mid + 1 and e = mid - 1  
     return (key > v[mid]) ? binarys(v,mid + 1,e,key) :binarys(v,s,mid - 1,key); //Using ternary operator 
 }
 
