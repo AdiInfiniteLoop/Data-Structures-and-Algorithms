@@ -1,0 +1,1 @@
+ leftArr.size()
