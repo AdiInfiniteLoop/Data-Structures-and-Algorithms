@@ -27,26 +27,31 @@ void merge(vector<int>& arr, int left, int mid, int right) {
   while (j < rightArr.size()) {
     arr[k++] = rightArr[j++];
 }
+
 }
 void mergeSort(vector<int>& arr, int left, int right) {
-  if (left < right) {
+  if (left < right){
+    
     int mid = (left + right) / 2;
 
     mergeSort(arr, left, mid);
     mergeSort(arr, mid + 1, right);
 
     merge(arr, left, mid, right);
+  
   }
+  else return;  //Base Case
 }
 
 int main() {
-  vector<int> arr = {5, 3, 2, 1, 4,4,65,7,87,8,56,7};
+    vector<int> arr{2,34,5,6,7,8,9,9};
+    int n = arr.size();
 
-  mergeSort(arr, 0, arr.size() - 1);
+    mergeSort(arr, 0, n - 1);
 
-  for (int i = 0; i < arr.size(); i++) {
-    cout << arr[i] << " ";
-  }
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
 
   cout << endl;
 
