@@ -2,7 +2,7 @@
     "configurations": [
         {
             "compilerPath": "/usr/bin/gcc",
-            "cppStandard": "gnu++20",
+            "cppStandard": "gnu++17",
             "cStandard": "c17",
             "defines": [],
             "includePath": [
