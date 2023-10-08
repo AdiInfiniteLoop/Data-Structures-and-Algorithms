@@ -20,7 +20,7 @@ for(int i = 0; i < value.length();i++){
 
 }
 int main(){
-    std::string str = "24";
+    std::string str = "99";
     std::string out = "";
     std::vector<std::string> map(10);
     map['2'] = "abc";
