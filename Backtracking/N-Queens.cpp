@@ -21,27 +21,22 @@ int j = col;
 //Keep decreasing the j value until j reaches the first column i,e,col=0
 while(j >= 0){
     //if queen is already there, not safe
-    if(board[i][j] == 'Q') return false;
-    j--;
+    if(board[i][j--] == 'Q') return false;
 }
 
 //Left-up diagonal
 //if queen is already there, not safe
-i = row;
+i = row;//reset row and col everytime
 j= col;
 while(j >= 0 && i >= 0){
-if(board[i][j] == 'Q') return false;
-    i--;
-    j--;
+if(board[i--][j--] == 'Q') return false;
 }
 //Left- Down diagonal
 //if queen is already there, not safe
 i = row;
 j= col;
 while(i < n && j >= 0){
-if(board[i][j] == 'Q') return false;
-    i++;
-    j--;
+if(board[i++][j--] == 'Q') return false;
 }
 return true;
 }
@@ -64,7 +59,7 @@ void nqueen(std::vector<std::vector<char>> &board,int col, int n){
 }
 int main(){
 int n = 4;
-std::vector<std::vector<char>> board(n, std::vector<char>(n,'-'));//n x n matrix created
+std::vector<std::vector<char>> board(n, std::vector<char>(n,'-'));//n x n matrix created initialized with '-'
 nqueen(board,0,n);
 
 }
