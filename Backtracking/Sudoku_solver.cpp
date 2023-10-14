@@ -2,19 +2,11 @@
 #include <vector>
 
 bool isSafe(int board[9][9], int n, int val, int i, int j){
-    //Check column
-    for(int row = 0; row < n; row++){
-        if(board[row][j] == val) return false;
-    }
-    //Check row
-    for(int col = 0; col < n; col++){
-        if(board[i][col] == val) return false;
-    }
-for(int k = 0; k < 9;k++){
-    if(board[3*(i/3) +(i/3)][3*(j/3) + (i%3)] == val) return false;
+for(int k = 0; k < n;k++){
+    //row
+    if(board[i][k] == val || board[k][j] == val || board[3*(i/3)+ (k/3)][3*(j/3) + (k%3)] == val) return false;
 }
-    return true;
-
+return true;
 }
 
 bool solve(int board[9][9], int n){
@@ -34,10 +26,11 @@ bool solve(int board[9][9], int n){
 
                     }
                 }
+                return false;
             }
         }
     }
-    return false;
+    return true;
     
 }
 int main()
@@ -62,6 +55,7 @@ for(int i = 0; i < 9;i++){
     }
     std::cout<<std::endl;
 }
+
 }
 
 
