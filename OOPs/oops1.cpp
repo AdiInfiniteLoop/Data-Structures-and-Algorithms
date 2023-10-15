@@ -2,6 +2,10 @@
 #include<string.h>
 
 using namespace std;
+class box{
+public:
+    static int a;
+};
 class Animal{
     public:
 int age;
@@ -18,12 +22,12 @@ private:
     int weight;
 public:
     //State
-    int age;
     string name;
+    int age;
 
     //Behaivour/Functions in C++ and metods in Java/
     void eat(){
-cout<<"EAting function called"<<endl;
+cout<<"Eating function called"<<endl;
     }
 
     void sleep(){
@@ -69,6 +73,22 @@ class Car{
         cout<<"Destructor is called "<<endl;    }
 };
 
+class Human{
+public:
+//copy constructor
+int age;
+    Human(){
+        this -> age = 0;
+    }
+    Human (Human &insaan){
+        cout<<"Here is the copy constructor"<<endl;
+        this -> age = insaan.age;
+    }
+    ~Human(){
+        cout<<"De allocation is done"<<endl;
+    }
+};
+
 int main(){
     std::cout<<"Size of an empty class is "<<sizeof(Animal)<<endl; // the output comes 8 rather than 5 ;;Study Padding and greedy alignment
     //Object creation from person class
@@ -104,6 +124,22 @@ Person a = d;//copy constructotr is created
 cout<<a.age;//The value of age is copied
 Person person(d);//other way to create copy constructor
 
-delete car2;//Manually calling destructor
+delete car2;//Manually calling destructor for dynamic allocation
 delete car3;
+
+// Human x; 
+// // x->age= 10; gives error
+// x.age = 100;
+// Human y = x;
+// cout<<y.age;
+
+//Dynamic memory allocation copy constructor
+Human *x = new Human;
+x->age = 100;
+Human y(*x);
+cout<<y.age<<" is the age ";
+
+delete x;
+// delete y; gives error as it expects a pointer it says
+box::a;//Using scope resolution operator toaccess static memeber functions and varibles
 }
