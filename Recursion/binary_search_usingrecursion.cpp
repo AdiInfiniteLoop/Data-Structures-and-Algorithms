@@ -1,6 +1,6 @@
 #include<iostream>
 
-void binarys(int *v, int& s, int& e, int &key){
+void binarys(int *v, int s, int e, int key){
     if(s > e) return;
     int mid = s + (e - s)/2;
 
@@ -16,4 +16,5 @@ int main(){
     int n = 9;
     int s = 0, e = 8;
     binarys(v,s,e,key);
+    
 }

@@ -29,7 +29,7 @@ class Solve{
 class Maths{
     public:
         int val;
-            int operator + (Maths &b){
+            int operator + (Maths &b){//remember the address
                 int value1 = this->val;
                 int value2 = b.val;
                 return value1*value2;//same with multiplication here

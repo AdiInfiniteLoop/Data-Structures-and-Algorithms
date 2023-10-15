@@ -2,7 +2,7 @@
 #include <vector>
 
 using namespace std;
-void merge(vector<int>& arr, int left, int mid, int right) {
+void merge(int  arr, int left, int mid, int right) {
   // Create two temporary arrays to store the sorted halves of the input array.
   vector<int> leftArr(mid - left + 1);
   vector<int> rightArr(right - mid);
@@ -29,7 +29,7 @@ void merge(vector<int>& arr, int left, int mid, int right) {
 }
 
 }
-void mergeSort(vector<int>& arr, int left, int right) {
+void mergeSort(int arr, int left, int right) {
   if (left < right){
     
     int mid = (left + right) / 2;

@@ -22,12 +22,13 @@ class Child1:protected Parent{//class child class name: (mode of inheritance) pa
             //therfore we use a getter function print() here.
         }
 };
-class Child2: protected Child1{
+class Child2: protected Child1{//Multi=level inheritance
         public:
             void print(){//getter function
                 cout<<this-> age<<" :2nd one ";
             }
 };
+
 
 int main(){
     Child1 *kid1 = new Child1;
