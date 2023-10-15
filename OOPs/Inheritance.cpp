@@ -3,8 +3,8 @@
 using namespace std;
 
 class Parent{
-    protected:
-        int age;
+    protected:  //when private: even getter function can't be used to access data member
+        int age; 
         string name;
     Parent(){
         cout<<"Parent constructor is called"<<endl;
@@ -22,7 +22,7 @@ class Child1:protected Parent{//class child class name: (mode of inheritance) pa
             //therfore we use a getter function print() here.
         }
 };
-class Child2: private Parent{
+class Child2: protected Child1{
         public:
             void print(){//getter function
                 cout<<this-> age<<" :2nd one ";
