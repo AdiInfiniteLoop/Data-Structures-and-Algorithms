@@ -35,6 +35,20 @@ class Maths{
                 return value1*value2;//same with multiplication here
             }
 };
+
+class Parent{
+    public:
+    void speak(){
+        cout<<"Speaking"<<endl;
+    }
+};
+class Child : public Parent{
+public:
+    void speak(){//Runtime polymorphism -> Function overriding
+        cout<<"Talking"<<endl;
+    }
+};
+
 int main(){
 Solve obj1,obj2;
 obj1.val = 2;
@@ -45,4 +59,7 @@ Maths a,b;
 a.val = 10;
 b.val = 11;
 cout<<a+b;
+Parent *child = new Child; //pointer is to parent class therfore it will speaking will be printed
+child->speak();
+
 }
