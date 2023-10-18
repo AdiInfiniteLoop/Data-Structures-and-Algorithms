@@ -12,6 +12,11 @@ public:
         this->x = x;
         this->next = NULL;
      }
+    ~Node(){
+        this->x = x;
+        this-> next = next;
+        cout<<"Deconstructor is called\n";
+    }
 };
 void printLL(Node* n1){
     Node* itr = n1;
