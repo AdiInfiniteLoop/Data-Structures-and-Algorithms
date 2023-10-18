@@ -69,7 +69,7 @@ void insertAtPos(int pos, Node* &head, Node* &tail,int  data){
     return;//don't forget to return
     }
     int len = findLength(head);
-    if(pos == len){
+    if(pos >= len){
         insertAtTail(head,tail,data);
         return;
     }
@@ -84,6 +84,41 @@ void insertAtPos(int pos, Node* &head, Node* &tail,int  data){
     Node* newNode = new Node(data);
     newNode->next = curr;
     prev->next = newNode;
+}
+
+void delfromposition(Node*&head,Node* &tail,int pos){
+
+    if(pos == 1){
+        Node* temp = head;//creation
+        head = head->next;//updation
+        temp->next = NULL;//deletion/unlinking
+        delete temp;//deleting temp    //C.U.D
+        return;
+    }
+    int len = findLength(head);
+    if(pos == len){
+        int i = 1;
+        Node* prev = head;
+        while(i < pos-1){
+            prev = prev-> next;
+            i++;
+        }
+        Node* temp = tail;//creation
+        prev->next = NULL;//deletion
+        tail = prev;//updation
+        delete temp;//deleting temp
+        return;
+    }
+    int i = 1;
+    Node* prev = head;
+    while(i < pos-1){
+        prev = prev-> next;
+        i++;
+    }
+    Node* curr = prev->next;
+    prev->next = curr->next;
+    curr->next = NULL;
+
 }
 int main(){
 //dynamic initalization of linked list
@@ -112,8 +147,10 @@ insertAtHead(head,tail,25);
 // printLL(head);
 insertAtTail(head,tail,30);
 // printLL(tail);
-
+cout<<endl;
 insertAtPos(6,head,tail,11);
 printLL(head);
-
+cout<<endl;
+delfromposition(head,tail,4);
+printLL(head);
 }
