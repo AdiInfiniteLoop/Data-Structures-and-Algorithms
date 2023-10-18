@@ -113,7 +113,7 @@ insertAtHead(head,tail,25);
 insertAtTail(head,tail,30);
 // printLL(tail);
 
-insertAtPos(6,head,tail,11);//can'insert at 0
+insertAtPos(6,head,tail,11);
 printLL(head);
 
 }
