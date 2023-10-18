@@ -47,7 +47,16 @@ void insertAtHead(Node* &head,Node* &tail,int data){    //pass head by reference
     head = newNode;
 }
 
-void insertAtPos(int pos, Node* &head, Node* &tail,int data){
+int findLength(Node* &head){
+    int len = 0;
+    Node* temp = head;
+    while(temp != NULL){
+        temp = temp->next;
+        len++;
+    }
+    return len;
+}
+void insertAtPos(int pos, Node* &head, Node* &tail,int  data){
     if(head == NULL){
     Node* newNode = new Node(data);//create new node
     head = newNode;
@@ -55,7 +64,15 @@ void insertAtPos(int pos, Node* &head, Node* &tail,int data){
     return;
 }
     //Step.1 find the position this->position = pos samjhe
-
+    if(pos == 0) {
+    insertAtHead(head,tail,data);//insert at head
+    return;//don't forget to return
+    }
+    int len = findLength(head);
+    if(pos == len){
+        insertAtTail(head,tail,data);
+        return;
+    }
     int i = 1;
     Node* prev = head;//make prev as new head since during printing only 3 elements will be printed
     while(i < pos){
@@ -96,8 +113,7 @@ insertAtHead(head,tail,25);
 insertAtTail(head,tail,30);
 // printLL(tail);
 
-insertAtPos(0,head,tail,11);
+insertAtPos(6,head,tail,11);//can'insert at 0
 printLL(head);
-cout<<head->x<<" ";
-cout<<tail->x;
+
 }
