@@ -1,161 +1,141 @@
 #include<iostream>
-using namespace std;
+
 class Node{
 public:
-    int x;
+    int data;
     Node* next;
     Node(){
-        this-> x = 0;
+        this->data;
+        this->next;
+    }
+    Node(int data){
+        this->data = data;
         this->next = NULL;
     }
-    Node(int x){
-        this->x = x;
-        this->next = NULL;
-     }
     ~Node(){
-        this->x = x;
-        this-> next = next;
-        cout<<"Deconstructor is called\n";
+        this->data = data;
+        this->next = next;
     }
 };
-void printLL(Node* n1){
-    Node* itr = n1;
-    while(itr != NULL){
-        std::cout<<itr->x<<" ";
-        itr = itr->next;
-    }
-}
-void insertAtTail(Node* &head,Node* &tail,int data){
-   
-    if(head == NULL){
-    Node* newNode = new Node(data);//create new node
-    head = newNode;
-    tail = newNode;
-    return;
-}
-    Node* newNode = new Node(data);
-    tail->next = newNode;
-    tail = newNode;
-
-}
-void insertAtHead(Node* &head,Node* &tail,int data){    //pass head by reference 
-
-    if(head == NULL){
-    Node* newNode = new Node(data);//create new node
-    head = newNode;
-    tail = newNode;
-    return;
-}
-    Node* newNode = new Node(data);
-    newNode->next = head;
-
-    head = newNode;
-}
-
 int findLength(Node* &head){
     int len = 0;
     Node* temp = head;
-    while(temp != NULL){
+    while(temp!= NULL){
         temp = temp->next;
         len++;
     }
     return len;
 }
-void insertAtPos(int pos, Node* &head, Node* &tail,int  data){
-    if(head == NULL){
-    Node* newNode = new Node(data);//create new node
+void print(Node* first){
+    Node* temp = first;
+    while(temp != NULL){
+        std::cout<<temp->data<<" ";
+        temp = temp->next;
+    }
+}
+void insertAthead(Node* &head,Node* &tail,int data){
+if(head == NULL){
+    Node* newNode = new Node(data);
     head = newNode;
     tail = newNode;
     return;
 }
-    //Step.1 find the position this->position = pos samjhe
-    if(pos == 0) {
-    insertAtHead(head,tail,data);//insert at head
-    return;//don't forget to return
-    }
-    int len = findLength(head);
-    if(pos >= len){
-        insertAtTail(head,tail,data);
-        return;
-    }
-    int i = 1;
-    Node* prev = head;//make prev as new head since during printing only 3 elements will be printed
-    while(i < pos){
-        prev = prev->next;//move prev ahead so keep updating prev with its next node
-        i++;
-    }
-    Node* curr = prev->next;
-    //step.2 create a new node to be inserted
-    Node* newNode = new Node(data);
-    newNode->next = curr;
-    prev->next = newNode;
+Node* newNode = new Node(data);
+newNode->next = head;
+head = newNode;//newNode ko head banana
 }
 
-void delfromposition(Node*&head,Node* &tail,int pos){
+void insertAttail(Node* &head,Node* &tail,int data){
+    if(head == NULL){
+        Node* newNode = new Node(data);
+        head = newNode;
+        tail = newNode;
+        return;
+    }
+    Node* newNode = new Node(data);
+    tail->next = newNode;
+    tail = newNode;
+}
 
-    if(pos == 1){
-        Node* temp = head;//creation
-        head = head->next;//updation
-        temp->next = NULL;//deletion/unlinking
-        delete temp;//deleting temp    //C.U.D
+void insertatpos(Node* &head,Node* &tail,int pos, int data){
+    if(head == NULL){
+        Node* newNode = new Node(data);
+        head = newNode;
+        tail = newNode;
+        return;
+    }
+    if(pos == 0){
+        insertAthead(head,tail,data);
         return;
     }
     int len = findLength(head);
     if(pos == len){
-        int i = 1;
-        Node* prev = head;
-        while(i < pos-1){
-            prev = prev-> next;
-            i++;
-        }
-        Node* temp = tail;//creation
-        prev->next = NULL;//deletion
-        tail = prev;//updation
-        delete temp;//deleting temp
+        insertAttail(head,tail,data);
         return;
     }
     int i = 1;
     Node* prev = head;
-    while(i < pos-1){
-        prev = prev-> next;
+    while(i < pos - 1){
+        prev = prev->next;
+        i++;
+    }
+    Node* newNode = new Node(data);
+    Node* curr = prev->next;
+    newNode->next = curr;
+    prev->next = newNode;
+}
+
+void deletion(Node* &head,Node* &tail,int pos){
+    //CUD
+    if(pos == 1){
+        Node* temp = new Node;
+        head = head->next;//to point towards nowhere
+        temp->next = NULL;
+        delete temp;
+        return;
+    }
+    if(pos == findLength(head)){
+        Node* temp = new Node;
+        tail->next = NULL;
+        temp = tail->next;
+    }
+    int i = 1;
+    Node* prev = new Node;
+    while(i < pos - 1){
+        prev = prev->next;
         i++;
     }
     Node* curr = prev->next;
     prev->next = curr->next;
     curr->next = NULL;
-
 }
 int main(){
-//dynamic initalization of linked list
+/*Step1:Dynamic declaration and initialization of list
+Step2:Link the lists using->next pointer
+Step3:Print it b making temporary node*/
 // Node* first = new Node(10);
 // Node* second = new Node(20);
 // Node* third = new Node(30);
 // Node* fourth = new Node(40);
+// first->next = second;
+// second->next = third;
+// third->next = fourth;
+// print(first);
+// std::cout<<std::endl;
+Node* head = new Node(1110); //initialize with avalue to avois 0
+Node* tail = new Node(10);
+insertAthead(head,tail,110);
+insertAthead(head,tail,100);
+insertAttail(head,tail,432);
 
-// //Linking the list
-// first-> next = second;
-// second-> next = third;
-// third-> next = fourth;
+print(head);
+std::cout<<"\n";
+print(tail);
+insertatpos(head,tail,4,2);
+std::cout<<"\n";
+print(head);
+std::cout<<"\n";
+deletion(head,tail,1);
+print(head);
 
-// cout<<"Printinglinked lists:\t";//don't forget to call the function
-// printLL(first);
-
-//insert node at head
-// Node* head = new Node(); LEADS TO PRINTING A 0 AT THE END
-Node* head = NULL; //TO ENSURE THAT THE LIST IS EMPTY
-Node* tail = NULL;
-insertAtHead(head,tail,5);
-insertAtHead(head,tail,10);
-insertAtHead(head,tail,15);
-insertAtHead(head,tail,20);
-insertAtHead(head,tail,25);
-// printLL(head);
-insertAtTail(head,tail,30);
-// printLL(tail);
-cout<<endl;
-insertAtPos(6,head,tail,11);
-printLL(head);
-cout<<endl;
-delfromposition(head,tail,4);
-printLL(head);
 }
