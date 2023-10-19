@@ -78,7 +78,7 @@ void insertatpos(Node* &head,Node* &tail,int pos,int data){
         return;
     }
     int len = findLength(head);
-    if(pos == len){
+    if(pos > len){
         insertattail(head,tail,data);
         return;
     }
@@ -90,13 +90,45 @@ void insertatpos(Node* &head,Node* &tail,int pos,int data){
         i++;
     }
     Node* curr = prev->next;
-    newNode->next = curr;
-    prev->next = newNode;
-    curr->prev = newNode;
+    //the order doens't matter as we have taken a temprorary pointer
     newNode->prev = prev;
+    prev->next = newNode;
+    newNode->next = curr;
+    curr->prev = newNode;
+}
 
-
-
+void deletion(Node* &head,Node* &tail,int pos){
+    if(pos == 0){
+        std::cout<<"Not Possibel\n";
+        return;
+    }
+    if(pos == 1){
+        Node* temp = head;
+        head = head->next;
+        temp->next = NULL;
+        head->prev =NULL;
+        return;
+    }
+    int len = findLength(head);
+    if(pos >= len){
+        Node* temp = tail;
+        tail = tail->prev;
+        temp->prev =NULL;
+        tail->next = NULL;
+        delete temp;
+        return;
+    }
+    int i = 1;
+    Node* prevNode = head;
+    while(i < pos - 1){
+        prevNode = prevNode->next;
+        i++;
+    }
+    Node* curr = prevNode->next;
+    prevNode->next = curr->next;
+    curr->next->prev->prev =prevNode;
+    curr->next = NULL;
+    curr ->prev =NULL;
 }
 int main(){
 Node* first = new Node(10);
@@ -123,6 +155,9 @@ print(head);
 insertattail(head,tail,99);
 print(tail);
 std::cout<<std::endl;
-insertatpos(head,tail,0,98);
+insertatpos(head,tail,5,98);
+print(head);
+deletion(head,tail,6);
+std::cout<<std::endl;
 print(head);
 }
