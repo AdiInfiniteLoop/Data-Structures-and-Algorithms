@@ -1,1 +1,1 @@
-    // print(head);
+seventh->next = fourth;
