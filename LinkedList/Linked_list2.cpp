@@ -157,7 +157,7 @@ print(tail);
 std::cout<<std::endl;
 insertatpos(head,tail,5,98);
 print(head);
-deletion(head,tail,6);
+deletion(head,tail,6);//if sizew greater than list size remove last element
 std::cout<<std::endl;
 print(head);
 }

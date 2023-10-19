@@ -99,6 +99,7 @@ void deletion(Node* &head,Node* &tail,int pos){
         tail->next = NULL;
         temp = tail->next;
     }
+    //find the previous node ans remove current node
     int i = 1;
     Node* prev = new Node;
     while(i < pos - 1){
