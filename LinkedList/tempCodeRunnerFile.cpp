@@ -1,1 +1,1 @@
-seventh->next = fourth;
+everse(anshead);

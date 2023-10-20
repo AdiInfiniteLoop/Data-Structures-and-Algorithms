@@ -78,5 +78,5 @@ seventh->next = eighth;
 seventh->next = fourth;
 
 std::cout<<detectLoop(first)->data<<" is the starting point"<<std::endl;
-print(first);
+print(first);//after removalof loop
 }
