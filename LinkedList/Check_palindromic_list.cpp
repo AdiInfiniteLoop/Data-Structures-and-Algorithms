@@ -52,12 +52,15 @@ bool isPalindrome(ListNode* &head){
         ListNode* slow = head;
         ListNode* fast = head;
     while(fast != nullptr && fast->next != nullptr){
-        fast = fast->next->next;
+        fast = fast->next;
+        if(fast->next != nullptr){
+        fast = fast->next;
         slow = slow->next;
+        }
     } 
     //slow is middle 
     ListNode* reversed = reverse(slow->next);
-    slow->next =reversed;
+    slow->next =reversed;//joining not necessary
     ListNode* temp = head;
     ListNode* temp1 = reversed;
     while(temp != nullptr && temp1 != nullptr){
@@ -70,15 +73,15 @@ bool isPalindrome(ListNode* &head){
 int main(){
     ListNode* first = new ListNode(1);
     ListNode* second = new ListNode(2);
-    ListNode* third = new ListNode(3);
-    ListNode* fourth = new ListNode(3);
-    ListNode* fifth = new ListNode(2);
-    ListNode* sixth = new ListNode(1);
+    // ListNode* third = new ListNode(3);
+    // ListNode* fourth = new ListNode(3);
+    // ListNode* fifth = new ListNode(2);
+    // ListNode* sixth = new ListNode(1);
     first->next = second;
-    second->next = third;
-    third->next = fourth;
-    fourth->next = fifth;
-    fifth->next = sixth;
+    // second->next = third;
+    // third->next = fourth;
+    // fourth->next = fifth;
+    // fifth->next = sixth;
     print(first);
     std::cout<<middle(first)->data<<" is the middle node\n";
     std::cout<<isPalindrome(first);
