@@ -1,1 +1,2 @@
-everse(anshead);
+    // print(first);
+    // print(sixth);
