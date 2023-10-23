@@ -4,7 +4,7 @@ using namespace std;
 
 void printMiddle(stack<int> s,int n){
     //Base Case
-
+    if(s.size() == 0) printf("There is no middle element instack\n");
     if(n/2+1 == s.size()){
         cout<<"The middle element is : "<<s.top()<<endl;
         return;
