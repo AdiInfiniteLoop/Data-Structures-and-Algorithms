@@ -1,7 +1,11 @@
 #include<iostream>
 #include<stack>
 using namespace std;
-
+/*
+perform operations
+recursion
+backtrack
+*/
 void solve(stack<int> &s,int temp){
     //Base case
     if(s.empty()){
@@ -22,6 +26,7 @@ void insertAtbot(stack<int> &s,int &N){
     s.pop();
     solve(s,temp);
     //backtrack
+
 }   
 int main(){
     stack<int> s;
@@ -32,6 +37,7 @@ int main(){
     s.push(5);
     s.push(6);
     int N = s.size();
+
     insertAtbot(s,N);
     while(!s.empty()){
         cout<<s.top()<<" ";
