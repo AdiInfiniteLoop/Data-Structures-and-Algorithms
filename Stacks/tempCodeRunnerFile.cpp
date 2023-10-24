@@ -1,5 +1,11 @@
-    while(!s.empty()){
-        cout<<s.top()<<" ";
-        s.pop();
+void sort(stack<int> &s){
+    //Base Case
+    if(s.empty()){
+        return;
     }
-    cout<<endl;
+    int top = s.top();
+    s.pop();
+    sort(s);
+    insertattarget(s,top);
+    
+}
