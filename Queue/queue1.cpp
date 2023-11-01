@@ -205,7 +205,7 @@ int main(){
     //     q->pop();
     // }
     // Circular_Queue* cq = new Circular_Queue(2);
-
+#if 0
 std::deque<int> dq;
 dq.push_front(10);
 //10
@@ -226,4 +226,5 @@ dq.pop_back();
 //30 10
 dq.pop_front();
 //10
+#endif
 }
