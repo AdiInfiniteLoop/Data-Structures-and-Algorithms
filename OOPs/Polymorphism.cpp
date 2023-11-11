@@ -62,4 +62,19 @@ cout<<a+b;
 Parent *child = new Child; //pointer is to parent class therfore it will speaking will be printed
 child->speak();
 
+//2d array using heap memory
+int row = 3;
+int col = 4;
+int **arr = new int*[row];
+for(int i = 0;i < row;i++){
+    arr[i] = new int[col];
+}
+for(int i = 0; i < row;i++){
+    for(int j = 0; j < col;j++) cout<<arr[i][j];
+    cout<<endl;
+}
+//deallocation of the heap memeory
+for(int i = 0; i < row;i++) delete []arr[i];//first deletion
+delete []arr;//second deletion
+// vector<vector<int>> arr(n,vector<int>(m,1));     row then vector column then initializer//just revising
 }

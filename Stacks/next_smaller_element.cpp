@@ -1,7 +1,7 @@
 #include<iostream>
 #include<stack>
 #include<vector>
-using namespace std;
+using namespace std; 
 
 int main(){
     vector<int> ans;

@@ -44,6 +44,6 @@ int main(){
     //     st.pop();
     // }
     reverse(q);
-    cout<<"After reversing ";
+    cout<<"After reversing "; 
     Print(q);
 }

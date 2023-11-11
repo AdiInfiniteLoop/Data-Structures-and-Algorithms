@@ -18,6 +18,7 @@ int countRev (string s)
      }
  
  int count = 0;
+ 
  while(!st.empty()){
      char a = st.top();
      st.pop();
