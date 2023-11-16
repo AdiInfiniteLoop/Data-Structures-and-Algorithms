@@ -19,44 +19,63 @@ class Node{
 };
 
 Node* buildTree(){
-    int data;
-    cout<<"Enter the data\n";
-    cin>>data;
-    //Base Case 
-    if(data == -1) {
-        return NULL;
-    }
-    //Step A
-    Node* root = new Node(data);
-    //Step B
-    cout<<"Enter data for left part of recent"<<data<<"node:\n";
-    root->left= buildTree();
-    //Step c
-    cout<<"Enter the data for right  part of recent"<<data<<"node:\n";
-    root->right = buildTree();
-    return root;
+int data;
+cout<<"Enter the data\n";
+cin>>data;
+if(data == -1) return NULL;
+Node* root = new Node(data);
+cout<<"Left tree\n";
+root->left = buildTree();
+cout<<"Right tree\n";
+root->right = buildTree();
+return root;
+
 }
 
-void LevelOrderTraversal(Node* root){
+void LevelOrderTraversal(Node* &root){
     std::queue<Node*> q;
     q.push(root);
+    q.push(NULL);
     while(!q.empty()){
-        //1.Store the front of queue in temp variable
         Node* temp = q.front();
-        //2.Pop the front variable
+        
+        if(!q.empty())
         q.pop();
-        //3.Print the answer
-        cout<<temp->data<<" ";
-        //4.Insert the child nodes in the queue
-         if(temp->left) q.push(temp->left);
-         if(temp->right) q.push(temp->right);       
     }
 
+}
+
+void InorderTraversal(Node* root){  //LNR Method
+    if(root == NULL) return;
+    InorderTraversal(root->left);
+    cout<<root->data<<" ";
+    InorderTraversal(root->right);
+
+}
+
+void PreorderTraversal(Node* root){
+    if(root == NULL) return;
+    cout<<root->data<<" ";
+    PreorderTraversal(root->left);
+    PreorderTraversal(root->right);
+}
+void PostorderTraversal(Node* root){
+    if(root == NULL) return;
+    PreorderTraversal(root->left);
+    PreorderTraversal(root->right);
+    cout<<root->data<<" ";
 }
 signed main(){
 Node* root = nullptr;
 root = buildTree();
 
+cout<<"Level Order Traversal\n";
 LevelOrderTraversal(root);
+cout<<"Inorder traversal\n";
+InorderTraversal(root);
+cout<<"\nPreorder traversal\n";
+PreorderTraversal(root);
+cout<<"Postorder traversal\n";
+PostorderTraversal(root);
 
 }
