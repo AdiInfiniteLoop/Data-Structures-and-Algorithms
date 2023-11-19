@@ -73,6 +73,6 @@ signed main(){
     root = buildTree();
     levelordertraversal(root);
     cout<<"The Max depth/Height of the tree is:\t"<<maxDepth(root);
-    cout<<"The Min depth od the tree is:\t"<<minDepth(root);
+
 
 }
