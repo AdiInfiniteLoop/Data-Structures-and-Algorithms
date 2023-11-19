@@ -45,7 +45,7 @@ void levelordertraversal(TreeNode* &root){
                 q.push(NULL);
         }
         else{
-            cout<<temp->val;
+            cout<<temp->val<<" ";
             if(temp->left)q.push(temp->left);
             if(temp->right)q.push(temp->right);
         }
@@ -68,9 +68,38 @@ void inorder(TreeNode* &root){
     preorder(root->right);
 }
 
-signed main(){
-    TreeNode* root = NULL;
-    root = buildtree();
-    levelordertraversal(root);
+int find(int arr[], int ele,int n){
+    for(int i = 0; i < n - 1;i++){
+        if(ele == arr[i]) return i;
+    }
+    return -1;
+}
 
+TreeNode* buildfrompreorderinorder(int inorder[] , int preorder[],int size ,int &index, int inorderstart, int inorderend){
+//base case
+//by reference index: once  a element is traversed then move forward
+if(index >= size || inorderstart > inorderend){
+    return NULL;
+}
+//step.1
+int rootelement = preorder[index++];
+TreeNode* root = new TreeNode(rootelement);
+int pos = find(inorder,rootelement,size);
+//step.2
+root->left = buildfrompreorderinorder(inorder,preorder,size,index, inorderstart ,pos-1);
+root->right = buildfrompreorderinorder(inorder,preorder,size,index,pos+1,inorderend);
+return root;
+
+}
+
+signed main(){
+    // TreeNode* root = NULL;
+    // root = buildtree();
+    // levelordertraversal(root);
+    int size = 11;
+    int* inorder = new int[size] {4,3,5,2,6,1,9,8,10,7,11};
+    int* preorder = new int[size] {1,2,3,4,5,6,7,8,9,10,11};
+    int inorderstart = 0;
+    TreeNode* newroot = buildfrompreorderinorder(inorder,preorder,size,inorderstart,0,size-1);
+    levelordertraversal(newroot);
 }
