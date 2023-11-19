@@ -92,6 +92,21 @@ return root;
 
 }
 
+TreeNode* buildfrompostorderinorder(int inorder[] , int postorder[],int size ,int &postindex, int inorderstart, int inorderend){
+    if(postindex < 0 || inorderstart > inorderend){
+    return NULL;
+}
+//step.1
+int rootelement = postorder[postindex--];
+TreeNode* root = new TreeNode(rootelement);
+int pos = find(inorder,rootelement,size);
+//step.2
+root->right = buildfrompreorderinorder(inorder,postorder,size,postindex,pos+1,inorderend);
+root->left = buildfrompreorderinorder(inorder,postorder,size,postindex, inorderstart ,pos-1);
+
+return root;
+}
+
 signed main(){
     // TreeNode* root = NULL;
     // root = buildtree();
@@ -100,6 +115,11 @@ signed main(){
     int* inorder = new int[size] {4,3,5,2,6,1,9,8,10,7,11};
     int* preorder = new int[size] {1,2,3,4,5,6,7,8,9,10,11};
     int inorderstart = 0;
+    cout<<"PreOrder Traversal\n";
     TreeNode* newroot = buildfrompreorderinorder(inorder,preorder,size,inorderstart,0,size-1);
     levelordertraversal(newroot);
+    int* postorder = new int[size]{4,5,3,6,2,9,10,8,11,7,10};
+    cout<<"PostOrder Traversal:\n";
+    TreeNode* newernode = buildfrompostorderinorder(inorder,postorder,size,inorderstart,0,size - 1);
+    levelordertraversal(newernode);
 }
