@@ -12,7 +12,7 @@ std::string remove_duplicates(std::string &s,int n,int i,std::string &str){
 }
 
 signed main(){
-    std::string s = "aaxxcfdgg";
+    std::string s = "aaxxxcfdgg";
     int n = s.length();
     std::string output = "";
     remove_duplicates(s,n,0,output);
