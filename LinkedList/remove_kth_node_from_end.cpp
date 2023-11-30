@@ -1,4 +1,4 @@
-#include<iostream>
+    #include<iostream>
 
 struct ListNode {
     int val;
@@ -63,7 +63,7 @@ int main(){
     fifth ->next = sixth;
     print(first);
     std::cout<<std::endl; 
-    int k = 0;
+    int k = 1;
     ListNode* ans =   removekthnode(first,k);
     print(ans);
     
