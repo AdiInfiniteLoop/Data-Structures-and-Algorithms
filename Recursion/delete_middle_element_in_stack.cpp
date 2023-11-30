@@ -11,9 +11,17 @@ void printstack(stack<int> st){
 
 void delete_middle(stack<int> &st,int k){
     //base case
-    
-    //hypothesis:delete middle element
-    //induction:keep poping and reducing k with 1 value
+    if(k == 1){
+        st.pop();
+        return;
+    }
+    if(st.empty()) return;
+    //hypothesis:delete middle element.
+    //induction:keep poping and reducing k with 1 value.
+    int temp = st.top();
+    st.pop();
+    delete_middle(st,k-1);
+    st.push(temp);
 
 }
 int main(){
@@ -25,8 +33,7 @@ int main(){
    st.push(7);
    st.push(3);
     printstack(st);
-    delete_middle(st,st.size());
+    delete_middle(st,(st.size()/2)+1);
     printstack(st);
-    
 
 }
