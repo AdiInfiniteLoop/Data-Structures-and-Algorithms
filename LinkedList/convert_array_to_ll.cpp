@@ -19,7 +19,7 @@ void print(ListNode* &head){
 ListNode* convertarrt0ll(int *arr){
     ListNode* first = new ListNode(arr[0]);
     ListNode* dummy  = first;
-    for(int i = 0; i < 7;++i){
+    for(int i = 1; i < 7;++i){
         ListNode* temp = new ListNode(arr[i]);
         dummy->next = temp;
         dummy = temp;
