@@ -58,23 +58,15 @@ Node* insertbeforetail(Node* head,int val){
 
 Node* beforeapos(Node* head, int pos,int val){
     Node* temp = head;
-    if(head == NULL && pos == 1){
-        Node* dummy = new Node(val);
-        return dummy;
+    int i = 1;
+    while(i < pos){
+        temp = temp->next;
+        ++i;
     }
-        int i = 0;
-        while(i <= pos && temp){
-
-            temp = temp->next;
-            ++i;
-        }
-        Node* dummy = new Node(val);
-        dummy->next = temp;
-        dummy->prev = temp->prev;
-        temp->prev->next = dummy;
-        temp->prev = dummy;
-
-        return head;
+    Node* dummy = new Node(val,temp->prev,temp);
+    temp->prev->next = dummy;
+     dummy->next = temp;
+     return head;
 }
 
 void printll(Node* head){

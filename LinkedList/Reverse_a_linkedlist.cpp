@@ -36,6 +36,7 @@ void print(Node* &head){
         temp = temp->next;
     }
 }
+
 Node* reverselist(Node* head) {
     Node *prev = NULL;
     while(head != NULL){
@@ -45,8 +46,24 @@ Node* reverselist(Node* head) {
         head = nextNode;
     }
     return prev;
+}
+
+Node* deleteDuplicates(Node* head) {
+    Node* temp = head;
+    Node* nextnode;
+    while(temp && temp->next){
+        nextnode = temp->next;
+        if(temp->data == nextnode->data){
+            temp->next = temp->next->next;
+            nextnode->next = nullptr;
+            free(nextnode);
+            //remove the next node
+        }
+        temp = temp->next;
     }
-//CHECK THE  CODE OUTPUT NOT SHOWING
+    return head;
+}
+// CHECK THE  CODE OUTPUT NOT SHOWING
 // Node* reverselist(Node* & prev,Node* & curr){
 //     if(curr== NULL) return prev;
 //     Node* nextNode = curr->next;
@@ -54,16 +71,23 @@ Node* reverselist(Node* head) {
 //     return reverselist(prev,nextNode);
 
 // }
+
+
 int main(){
     Node* head = new Node(5);
     Node* tail = NULL;
     insertathead(head,tail,4);
     insertathead(head,tail,3);
-    insertathead(head,tail,2);
+    insertathead(head,tail,1);
+    insertathead(head,tail,1);
+    insertathead(head,tail,1);
     insertathead(head,tail,1);
     print(head);
     Node* curr = head;
     head = reverselist(curr);   
     std::cout<<std::endl;
+    print(head);
+    std::cout<<std::endl;
+    deleteDuplicates(head);
     print(head);
 }

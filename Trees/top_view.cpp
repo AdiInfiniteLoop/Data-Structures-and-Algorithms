@@ -10,48 +10,53 @@ void fastIO(){
     cin .tie(NULL);
 }
 
-struct TreeNode{
+struct Node{
     public:
         int data;
-        TreeNode* left;
-        TreeNode* right;
-        TreeNode():data(0),left(NULL),right(NULL){}
-        TreeNode(int data):data(data),left(NULL),right(NULL){}
+        Node* left;
+        Node* right;
+        Node():data(0),left(NULL),right(NULL){}
+        Node(int data):data(data),left(NULL),right(NULL){}
 };
 
-TreeNode* buildtree(){
+Node* buildtree(){
     int data;
-    cout<<"Enter the data\t";
     cin>>data;
     if(data == -1) {
         return NULL;
     }
-    TreeNode* root = new TreeNode(data);
+    Node* root = new Node(data);
+    std::cout<<"Enter the data for left tree\t";
     root->left = buildtree();
+    std::cout<<"Enter the data for right tree\t";
     root->right = buildtree();
     return root;
 }
 
-std::vector<int> topview(TreeNode* &root){
-    std::map<int,int> map;
-    std::vector<int> ans;
-    std::queue<std::pair<TreeNode*,int>>q;
+std::vector<int> topview(Node* &root){
+    std::queue<std::pair<Node*,int>>q;
+    std::map<int,Node*> mp;
+    std::vector<int>v;
     q.push(std::make_pair(root,0));
     while(!q.empty()){
-        auto it = q.front();
+        std::pair<Node*,int> temp_pair = q.front();
         q.pop();
-        TreeNode* curr = it.first;
-        int line = it.second;
-        if(map.find(line) == map.end()) map[line] = curr->data;
-        if(curr->left) q.push(std::make_pair(curr->left,line-1));
-        if(curr->right) q.push(std::make_pair(curr->right,line+1)); 
+        Node* temp =temp_pair.first;
+        int lvl = temp_pair.second;
+        if(mp.find(lvl) == mp.end()){
+            mp[lvl] = temp;
+        }
+        //Push children
+        if(temp->left)q.push(std::make_pair(temp->left,lvl-1));
+        if(temp->right)q.push(std::make_pair(temp->right,lvl+1));
     }
-    for(auto it:map)ans.push_back(it.second);
-    return ans;
-
+    for(auto &it: mp){
+        v.push_back(it.second->data);
+    }
+    return v;
 }
 signed main(){
-    TreeNode* root = NULL;
+    Node* root = NULL;
     root = buildtree();
     for(int it:topview(root))cout<<it<<" ";
 }
