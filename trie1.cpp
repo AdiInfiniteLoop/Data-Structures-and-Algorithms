@@ -70,6 +70,7 @@ public:
             if(!node->contains(str[i])){
                 return false;
             }
+            
             node = node->get(str[i]);
 
         }
