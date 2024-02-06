@@ -8,8 +8,8 @@ bool checkSorted(int arr[],int n){ //Can also take int *arr
 }
 
 int main(){
-int arr[] = {4,3,1,2,4,4};
-int n = 6;
+int arr[] = {3,1,2,4,4};
+int n = 5;
 
 if(checkSorted(arr,n) == true)   
     std::cout<<"Sorted";
