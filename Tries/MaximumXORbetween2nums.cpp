@@ -1,5 +1,4 @@
 #include<iostream>
-#include<climits>
 #include<string>
 using namespace std;
 
@@ -37,33 +36,33 @@ class Trie {
       root = new Node();
     }
     
-    void insert(int binary) {
+    void insert(int num) {
       Node* n = root;
-      for(int i = 31; i >= 0; --i) { //Left to Right
-        int bit = (binary >> i) & 1;
+      for(int i = 31; i >= 0; --i) {
+        int bit = (num>>i) & 1;
         if(!n->contains(bit)) {
-          n->put(bit, new Node);
+          n->put(bit, new Node());
         }
         n = n->get(bit);
       }
-      n->setEnd();
     }
 
-    int getMax(int binary) {
+    int getMax(int num) {
       Node* n = root;
-      int maxi = 0;
+      int maxi = 0; 
       for(int i = 31; i >= 0; --i) {
-        int bit = (binary>>i) & 1;
-        if(n->contains(1 - bit)) {
+        int bit = (num>>i) &1;
+        if(n->contains(!bit)) {
           maxi = maxi | (1 << i);
           n = n->get(!bit);
         }
-        else {
+        else if(n->get(bit) != NULL) {
           n = n->get(bit);
         }
       }
-    return maxi;
+      return maxi;
     }
+
 
 };
 
@@ -72,8 +71,6 @@ class Trie {
 int main() {
   Trie* t = new Trie();
   t->insert(3);
-  t->insert(6);
-  t->insert(5);
-  cout<<t->getMax(7);
-
+  t->insert(3);
+  cout<<t->getMax(3);
 }
