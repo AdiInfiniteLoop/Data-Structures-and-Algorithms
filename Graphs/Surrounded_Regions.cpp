@@ -1,3 +1,5 @@
+#include<bits/stdc++.h>
+
 class Regions {
 public:
     void solve(vector<vector<char>>& board) {
