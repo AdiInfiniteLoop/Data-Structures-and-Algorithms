@@ -51,7 +51,7 @@ void dfs(int* vis, T node, stack<T> &st) {
     vis[node] = 1;
 
     for(auto neighbour: adjList[node]) {
-        if(!vis[neighbour] == -1) {
+        if(!vis[neighbour]) {
             dfs(vis, neighbour, st);
         }
     }
@@ -64,7 +64,7 @@ void topoSort() {
     int* vis = new int[n];
     
     for(int i = 0; i < n; ++i) {
-        vis[i] = -1; // Set all vertices as not visited
+        vis[i] = 0; // Set all vertices as not visited
     }
 
     for(auto node: adjList) {
@@ -102,6 +102,7 @@ int main() {
 
     return 0;
 }
+
 
 
 /* 0 -> 1 -> 2-> 4 - > 5
