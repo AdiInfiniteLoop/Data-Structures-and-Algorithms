@@ -42,7 +42,7 @@ int main() {
   vector<int> result = shortestPath(graph, src, dest);
 
   cout << "Shortest path from " << src << " to " << dest << ": ";
-  for (int i = result.size() - 1; i >= 0; --i) {
+  for (int i = result.size() - 1; i >= 0; --i) { ://No need to reverse as we can print in reverse ordere.
     cout << result[i] << " ";
   }
 
