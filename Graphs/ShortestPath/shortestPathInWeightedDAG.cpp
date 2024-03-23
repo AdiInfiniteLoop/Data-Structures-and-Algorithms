@@ -51,7 +51,7 @@ void topoSort(vector<vector<int>> &edges, int src) {
 
 int main() {
     
-    vector<vector<int>> edges = { {0,1,4}, {1,2,5}, {2, 1, 7}};
+    vector<vector<int>> edges = { {0,1,4}, {1,2,5}, {0, 1, 7}};
     topoSort(edges, 0);
 }
 

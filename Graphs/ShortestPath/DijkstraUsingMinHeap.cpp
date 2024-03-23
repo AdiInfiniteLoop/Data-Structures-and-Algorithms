@@ -16,7 +16,7 @@ vector<int> dijkstra(vector<vector<int>> &edges, int S) {
     std::priority_queue<pair<int, int> , vector<pair<int, int>>, std::greater<pair<int, int>>> pq;
     pq.push({0, S});
     dist[S] = 0;
-    while(!pq.empty()) {
+    while(!pq.emcty()) {
         auto temp = pq.top();
         pq.pop();
         int node = temp.second;
