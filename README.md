@@ -9,16 +9,14 @@ To get started with any of the projects in this repository, follow these install
 
 Open a terminal or command prompt and run the following command:
 
-<spacebar> git clone https://github.com/AdiInfiniteLoop/Data-Structures-and-Algorithms.git
+<spacebar> ---  git clone https://github.com/AdiInfiniteLoop/Data-Structures-and-Algorithms.git ---
 
 2.Navigate to the Project Directory:
 
-  cd Data-Structures-and-Algorithms
+ <spacebar> --- cd Data-Structures-and-Algorithms ---
 
 Project Contents
 This repository covers a diverse range of data structures and algorithms.
-Contributing
-We welcome contributions and feedback from the developer community. If you're interested in contributing, please follow the guidelines outlined in our [Contribution Guidelines].
+I welcome contributions and feedback from the developer community.
 
-Contact
-If you have any questions, feedback, or suggestions, feel free to reach out to us at adiyouaresosmart@gmail.com.
+If you have any questions, feedback, or suggestions, feel free to reach out to me at dev.aditya.pradhan@gmail.com
